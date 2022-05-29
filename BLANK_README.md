@@ -8,7 +8,11 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
+<div id="top" align="center">
 
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+</div>
 
 <!-- PROJECT LOGO -->
 <br />
