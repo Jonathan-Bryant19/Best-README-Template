@@ -210,7 +210,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Jonathan Bryant - [jbryant9@gmail.com](jbryant9@gmail.com) - [spectrum19tech@gmail.com](spectrum19tech@gmail.com)
+Jonathan Bryant - jbryant9@gmail.com, spectrum19tech@gmail.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
