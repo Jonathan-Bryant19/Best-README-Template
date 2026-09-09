@@ -1,0 +1,9 @@
+# Never commit the TTS API key.
+tools/.env
+
+# Generated clip cache — the built mp3s under docs/content are committed, but
+# the intermediate per-line wav files are not.
+tools/.cache/
+
+.DS_Store
+node_modules/

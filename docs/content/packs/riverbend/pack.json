@@ -1,0 +1,90 @@
+{
+  "id": "riverbend",
+  "title": "Riverbend",
+  "tagline": "The town needs fixing. You're the one who can run.",
+
+  "voices": {
+    "ruby": {
+      "openaiVoice": "shimmer",
+      "instructions": "A warm, upbeat radio operator talking to a child she likes and trusts. Encouraging, playful, a little wry. Clear and bright. Never frightening, never urgent in a way that reads as danger to a young child."
+    },
+    "gus": {
+      "openaiVoice": "onyx",
+      "instructions": "A slow, goofy, completely harmless cartoon zombie. Confused groaning, comic timing, like a friendly monster in a children's show. Not scary."
+    },
+    "narrator": {
+      "openaiVoice": "fable",
+      "instructions": "A warm storyteller reading to a six-year-old at bedtime."
+    },
+    "cue": {
+      "openaiVoice": "shimmer",
+      "instructions": "A short, energetic coaching call-out to a child who is out running. Bright, clear, and easy to hear over footsteps."
+    }
+  },
+
+  "gear": [
+    { "id": "headlamp", "name": "Headlamp", "icon": "🔦" },
+    { "id": "backpack", "name": "Supply Pack", "icon": "🎒" },
+    { "id": "boots", "name": "Fast Boots", "icon": "🥾" },
+    { "id": "jacket", "name": "Runner's Jacket", "icon": "🧥" },
+    { "id": "radio", "name": "Pocket Radio", "icon": "📻" },
+    { "id": "whistle", "name": "Zombie Whistle", "icon": "🎺" }
+  ],
+
+  "base": {
+    "name": "Riverbend",
+    "structures": [
+      {
+        "id": "waterTower",
+        "name": "Water Tower",
+        "icon": "🚰",
+        "stages": ["Leaking", "Patched", "Full of water"],
+        "costs": [0, 3, 5]
+      },
+      {
+        "id": "garden",
+        "name": "Vegetable Garden",
+        "icon": "🥕",
+        "stages": ["Weeds", "Planted", "Harvest time"],
+        "costs": [0, 3, 4]
+      },
+      {
+        "id": "watchtower",
+        "name": "Watchtower",
+        "icon": "🔭",
+        "stages": ["Wobbly", "Rebuilt", "Lookout posted"],
+        "costs": [0, 3, 4]
+      },
+      {
+        "id": "radioMast",
+        "name": "Radio Mast",
+        "icon": "📡",
+        "stages": ["Fallen", "Standing", "Broadcasting"],
+        "costs": [0, 3, 5]
+      },
+      {
+        "id": "gate",
+        "name": "Front Gate",
+        "icon": "🚧",
+        "stages": ["Broken", "Propped up", "Strong"],
+        "costs": [0, 2, 4]
+      },
+      {
+        "id": "playground",
+        "name": "Playground",
+        "icon": "🛝",
+        "stages": ["Empty lot", "Swings up", "Best in town"],
+        "costs": [0, 3, 5]
+      }
+    ]
+  },
+
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "The Water Tower",
+      "blurb": "Riverbend's water tower sprang a leak. Somebody has to fetch pipes from the old hardware store, and everyone else is slower than you.",
+      "minutes": 16
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Riverbend Runners</title>
+<meta name="description" content="A story-driven interval running game for jogging with kids." />
+<meta name="theme-color" content="#12161f" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Riverbend" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/icon-180.png" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ───────────────────────── Home ───────────────────────── -->
+<section id="screen-home" class="screen is-active">
+  <header class="home-header">
+    <h1 class="wordmark">Riverbend<span>Runners</span></h1>
+    <button id="btn-base" class="chip" type="button">
+      <span class="chip-icon">📦</span><span id="supply-count">0</span> supplies
+    </button>
+  </header>
+
+  <div class="hero-stage">
+    <div id="home-hero" class="hero-holder"></div>
+  </div>
+
+  <div class="chapter-card">
+    <p class="eyebrow" id="chapter-eyebrow">Chapter 1</p>
+    <h2 id="chapter-title">Loading…</h2>
+    <p id="chapter-blurb" class="blurb"></p>
+    <p class="meta">
+      <span id="chapter-length">–</span> · <span id="audio-mode-label">checking audio…</span>
+    </p>
+  </div>
+
+  <button id="btn-start" class="btn-huge" type="button" disabled>START RUN</button>
+
+  <footer class="home-footer">
+    <button id="btn-dev" class="link-btn" type="button">dev tools</button>
+    <span id="progress-summary" class="muted"></span>
+  </footer>
+</section>
+
+<!-- ───────────────────────── Run ───────────────────────── -->
+<section id="screen-run" class="screen" data-interval="warmup">
+  <div class="run-top">
+    <div class="run-progress"><div id="run-progress-fill"></div></div>
+    <p class="run-clock"><span id="run-elapsed">0:00</span> / <span id="run-total">0:00</span></p>
+  </div>
+
+  <div class="run-main">
+    <p id="interval-label" class="interval-label">GET READY</p>
+    <p id="interval-countdown" class="interval-countdown">--</p>
+    <p id="interval-next" class="interval-next"></p>
+
+    <!-- Kept in the layout rather than floating, so a pickup can never land on
+         top of the story text or the Pause button. -->
+    <div id="toast" class="toast">
+      <span id="toast-icon" class="toast-icon">📦</span>
+      <span id="toast-text" class="toast-text"></span>
+    </div>
+  </div>
+
+  <p id="subtitle" class="subtitle" aria-live="polite"></p>
+
+  <div class="run-controls">
+    <button id="btn-pause" class="btn-round" type="button">Pause</button>
+    <button id="btn-end" class="btn-round btn-quiet" type="button">End</button>
+  </div>
+
+  <div id="dev-panel" class="dev-panel" hidden>
+    <span class="dev-label">dev</span>
+    <button data-speed="1" class="dev-btn" type="button">1×</button>
+    <button data-speed="2" class="dev-btn" type="button">2×</button>
+    <button data-speed="4" class="dev-btn" type="button">4×</button>
+    <button id="btn-skip" class="dev-btn" type="button">+60s</button>
+  </div>
+</section>
+
+<!-- ───────────────────────── Post-run ───────────────────────── -->
+<section id="screen-post" class="screen">
+  <p class="eyebrow">Chapter complete</p>
+  <h2 id="post-title">You made it back!</h2>
+  <p id="post-stats" class="muted"></p>
+
+  <ul id="post-loot" class="loot-list"></ul>
+
+  <div class="post-actions">
+    <button id="btn-to-base" class="btn-huge" type="button">GO TO BASE</button>
+    <button id="btn-post-home" class="link-btn" type="button">back to home</button>
+  </div>
+</section>
+
+<!-- ───────────────────────── Base ───────────────────────── -->
+<section id="screen-base" class="screen">
+  <header class="base-header">
+    <button id="btn-base-back" class="link-btn" type="button">← back</button>
+    <p class="supply-badge"><span class="chip-icon">📦</span><span id="base-supply-count">0</span></p>
+  </header>
+
+  <h2 id="base-title">Riverbend</h2>
+  <p id="base-progress" class="muted"></p>
+
+  <div class="base-stage">
+    <div id="base-scene" class="base-scene"></div>
+  </div>
+
+  <ul id="build-list" class="build-list"></ul>
+</section>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
