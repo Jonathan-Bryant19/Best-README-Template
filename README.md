@@ -33,15 +33,30 @@ gains it. He stands in the town he's rebuilt, wearing what he's found.
 
 ## Quick start
 
-```bash
-# serve it (any static server works)
-npx http-server docs -p 8000
+**On a phone — use GitHub Pages.** Settings → Pages → Deploy from a branch, pick
+the branch the app is on, folder **`/docs`**, Save. Wait a minute, then open the
+site and use **Share → Add to Home Screen**.
 
-# then open http://<your-computer's-LAN-ip>:8000 on the phone
+If the site shows this README instead of the app, the folder is set to `/ (root)`.
+There's a redirect at the repo root that handles that, but `/docs/` on the end of
+the URL also works.
+
+**On a computer — for editing, not for running outdoors:**
+
+```bash
+npx http-server docs -p 8000    # then http://localhost:8000
 ```
 
-On the phone, use **Share → Add to Home Screen** so it opens full-screen without
-browser chrome.
+Serving over your LAN (`http://192.168.x.x:8000`) and opening that on the phone
+*mostly* works, but it is not a secure context, so the browser silently withholds
+two things the app depends on outdoors:
+
+- **Wake Lock** — the screen sleeps mid-run. Before the audio is built that also
+  stops the narration, because iOS suspends speech synthesis when the browser
+  backgrounds.
+- **Service worker** — no offline caching, so the run needs signal throughout.
+
+Use the Pages URL for anything you actually jog with.
 
 You can jog with it right away — before any audio has been generated, it falls
 back to the phone's built-in text-to-speech. It sounds like a robot, and it stops
@@ -140,8 +155,20 @@ kitchen table, which you'll want long before you want to test it outdoors.
 ## Deploying
 
 The app is static and lives in `docs/`, so GitHub Pages needs one setting:
-**Settings → Pages → Deploy from a branch → `main` / `docs`**. Push, wait a minute,
-and it's on a URL you can open on any phone.
+**Settings → Pages → Deploy from a branch**, then pick the branch and folder
+**`/docs`**. Pages will serve any branch, so there's nothing to merge first. Push,
+wait a minute, and it's on a URL you can open on any phone.
+
+The live link appears in a banner at the *top* of the Pages settings screen, and
+only once the build has finished and you've reloaded — it never shows up next to
+the branch picker, which is easy to miss on a phone. You can also watch the build
+under the repo's Actions tab as *pages build and deployment*.
+
+Two safeguards are in the repo so a wrong setting doesn't produce a broken site:
+`index.html` at the root redirects to `docs/` when Pages is serving from `/ (root)`,
+and `.nojekyll` files stop Pages from running the site through Jekyll.
+
+This repo's default branch is `master`, not `main`.
 
 ## How it fits together
 
