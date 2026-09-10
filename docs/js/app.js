@@ -134,7 +134,7 @@ function handleRunEvent(event) {
     case 'beat': {
       $('subtitle').textContent = event.beat.text;
       if (event.beat.type === 'supply' || event.beat.type === 'gear') {
-        if (!event.silent) showToast(event.beat);
+        if (!event.silent) showPickup(event.beat);
       }
       break;
     }
@@ -146,15 +146,21 @@ function handleRunEvent(event) {
 }
 
 let toastTimer = null;
-function showToast(beat) {
-  const item = { kind: beat.type === 'gear' ? 'gear' : 'supply', id: beat.item };
-  $('toast-icon').textContent = iconFor(item);
-  $('toast-text').textContent =
-    beat.type === 'gear' ? `${beat.name} unlocked!` : `+${beat.count ?? 1} ${beat.name ?? beat.item}`;
+function flashToast(icon, text, ms = 3200) {
+  $('toast-icon').textContent = icon;
+  $('toast-text').textContent = text;
   $('toast').classList.add('is-visible');
 
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => $('toast').classList.remove('is-visible'), 3200);
+  toastTimer = setTimeout(() => $('toast').classList.remove('is-visible'), ms);
+}
+
+function showPickup(beat) {
+  const item = { kind: beat.type === 'gear' ? 'gear' : 'supply', id: beat.item };
+  flashToast(
+    iconFor(item),
+    beat.type === 'gear' ? `${beat.name} unlocked!` : `+${beat.count ?? 1} ${beat.name ?? beat.item}`
+  );
 }
 
 function finishRun(event, complete) {
@@ -295,6 +301,14 @@ function wireEvents() {
       $('btn-pause').textContent = 'Pause';
       requestWakeLock();
     }
+  });
+
+  $('btn-skip-interval').addEventListener('click', () => {
+    if (!app.session || app.session.finished) return;
+    const next = app.session.skipInterval();
+    // The label changes on its own a moment later; this confirms the tap landed,
+    // which matters when you're moving and not looking closely.
+    flashToast('⏭', next ? `Skipped to ${next.label.replace('!', '')}` : 'Finishing up', 1800);
   });
 
   $('btn-end').addEventListener('click', endRunEarly);

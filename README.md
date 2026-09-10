@@ -62,6 +62,18 @@ You can jog with it right away — before any audio has been generated, it falls
 back to the phone's built-in text-to-speech. It sounds like a robot, and it stops
 when the phone locks, but it works and the timing is real.
 
+> **[FOLLOW-UPS.md](FOLLOW-UPS.md)** is the running list of anything that needs a
+> human — work only you can do, and things that were built but couldn't be verified
+> from a container with no phone and no speakers. Start there.
+
+## During a run
+
+| Control | What it does |
+| --- | --- |
+| **Skip ⏭** | Jumps to the next interval. For when you've been walking a minute before remembering to press start, or the warm-up has outlived its usefulness. Anything you skip past is still credited. |
+| **Pause** | Stops the clock and the audio. Deliberately the biggest button — it's the one you reach for at speed. |
+| **End** | Ends the run early. Keeps whatever was collected, but doesn't mark the chapter finished. |
+
 ## Generating the story audio
 
 Real audio is what makes this work properly on a run: **a chapter is one

@@ -230,19 +230,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-weight: 600;
 }
 
-.run-controls { display: flex; gap: 12px; }
+.run-controls { display: flex; gap: 10px; }
 
 .btn-round {
   flex: 1;
-  padding: 18px;
+  padding: 18px 8px;
   border: 0;
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.28);
   color: inherit;
   font-size: 1.1rem;
   font-weight: 800;
+  white-space: nowrap;
 }
-.btn-quiet { flex: 0 0 32%; background: rgba(0, 0, 0, 0.14); }
+/* Pause stays the big one — it's the control you reach for at speed. Skip and
+   End sit either side of it so neither is easy to hit by accident. */
+.btn-quiet { flex: 0 0 26%; background: rgba(0, 0, 0, 0.14); font-size: 1rem; }
 
 /* Always occupies its slot in the run layout and only becomes visible on a
    pickup — reserving the space is what keeps it off the story text. */

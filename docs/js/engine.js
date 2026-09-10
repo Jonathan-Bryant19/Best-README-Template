@@ -129,10 +129,15 @@ export class RunSession {
     this.playback.stop();
   }
 
-  /** Dev affordance: jump forward without narrating everything you skipped past. */
-  skip(seconds) {
-    const target = Math.min(this.playback.time() + seconds, this.duration);
+  /**
+   * Moves the run to a given point without narrating everything jumped over.
+   * Anything collected on the way is still credited — you did the running, and
+   * losing supplies to a skip would be a confusing punishment mid-jog.
+   */
+  seekTo(seconds) {
+    const target = Math.min(Math.max(0, seconds), this.duration);
     this.playback.seek(target);
+
     for (const beat of this.beats) {
       if (this.beatTime(beat) <= target && !this.firedBeats.has(beat.id)) {
         this.firedBeats.add(beat.id);
@@ -140,7 +145,30 @@ export class RunSession {
         this.onEvent({ type: 'beat', beat, silent: true });
       }
     }
+
     this._tick();
+    return target;
+  }
+
+  /** Dev affordance: jump forward a fixed amount. */
+  skip(seconds) {
+    return this.seekTo(this.playback.time() + seconds);
+  }
+
+  /**
+   * Jump to the next interval — for when you've been walking for a minute before
+   * remembering to press start, or the warm-up has outlived its usefulness.
+   */
+  skipInterval() {
+    const current = this.intervalAt(this.playback.time());
+    if (!current) return this.seekTo(this.duration);
+
+    // Land a beat short of the boundary and let playback roll across it, so the
+    // next interval's spoken cue is heard from its first word instead of being
+    // clipped. Nothing rolls while paused, so then cross the line outright.
+    const target = this.running ? current.end - 0.2 : current.end + 0.05;
+    this.seekTo(target);
+    return this.intervals[this.intervals.indexOf(current) + 1] ?? null;
   }
 
   _loop() {
