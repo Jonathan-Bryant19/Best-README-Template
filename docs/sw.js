@@ -2,7 +2,9 @@
 // chapter has been opened at home, the whole thing — audio included — is on the
 // phone.
 
-const CACHE = 'riverbend-v1';
+// Bumping this name is what evicts the previous theme's cached content — the
+// activate handler deletes every cache that isn't this one.
+const CACHE = 'runner-two-v2';
 
 const SHELL = [
   './',

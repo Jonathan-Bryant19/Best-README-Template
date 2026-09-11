@@ -1,0 +1,112 @@
+{
+  "id": "ch01",
+  "title": "The Sunflower Patch",
+
+  "_comment": "Reskinned from riverbend/ch01 — same 960s workout, same beat ids at the same offsets, because that pacing was tested on a real jog with a six-year-old and worked. Only the surface changed. Gus and the pickle jar are unchanged on purpose.",
+
+  "intervals": [
+    { "type": "warmup", "seconds": 120 },
+    { "repeat": 3, "block": [
+      { "type": "jog", "seconds": 45 },
+      { "type": "walk", "seconds": 75 }
+    ]},
+    { "type": "chase", "seconds": 30 },
+    { "type": "walk", "seconds": 90 },
+    { "repeat": 2, "block": [
+      { "type": "jog", "seconds": 45 },
+      { "type": "walk", "seconds": 75 }
+    ]},
+    { "type": "cooldown", "seconds": 120 }
+  ],
+
+  "beats": [
+    { "id": "b01", "at": 3, "voice": "ruby",
+      "text": "Runner Two, this is Ruby at Sunnyside. I've got you on the radio. Start with an easy walk and warm those legs up." },
+
+    { "id": "b02", "at": 40, "voice": "ruby",
+      "text": "Here's the situation. The sprinklers gave out in the night and the sunflower patch has wilted. It made a sound like a whale sighing. We need sun." },
+
+    { "id": "b03", "at": 78, "voice": "ruby",
+      "text": "The garden shed is just down the road. In, out, easy. Oh, and there are a few zombies wandering about. But honestly? They are not very good at it." },
+
+    { "id": "b04", "at": 108, "voice": "ruby",
+      "text": "Warm up's nearly done, Runner Two. Get those legs ready to jog." },
+
+    { "id": "b05", "at": 172, "voice": "ruby", "type": "supply",
+      "item": "sun", "name": "Jars of sun", "count": 2, "icon": "☀️",
+      "text": "Great jogging! Walk it out now. And look down, by the mailbox. Two jars of sun that somebody dropped. Grab them!" },
+
+    { "id": "b06", "at": 205, "voice": "ruby",
+      "text": "Two jars in the bag. Those sunflowers are going to drink well tonight because of you." },
+
+    { "id": "b07", "at": 252, "voice": "ruby",
+      "text": "Keep it going! You are faster than anything out here." },
+
+    { "id": "b08", "at": 296, "voice": "ruby", "type": "supply",
+      "item": "sun", "name": "Jars of sun", "count": 2, "icon": "☀️",
+      "text": "Garden shed's just ahead, and the door is wide open. Shelf on your left. Two more jars of sun. That's plenty." },
+
+    { "id": "b09", "at": 328, "voice": "gus",
+      "text": "Uuuurgh. Snaaaacks?" },
+
+    { "id": "b10", "at": 336, "voice": "ruby",
+      "text": "Ha! That's just Gus. He has been trying to open the same jar of pickles for a month. Keep walking, he will never catch you." },
+
+    { "id": "b11", "at": 372, "voice": "ruby",
+      "text": "Jogging again. Nice and light." },
+
+    { "id": "b12", "at": 416, "voice": "ruby", "type": "gear",
+      "item": "wateringCan", "name": "Watering Can", "icon": "🪣",
+      "text": "Hold on. On the bench there. A watering can! Take it. That one is yours now, Runner Two." },
+
+    { "id": "b13", "at": 448, "voice": "ruby",
+      "text": "Okay. Slight problem. Gus has friends. And they have noticed you." },
+
+    { "id": "b14", "at": 468, "voice": "ruby",
+      "text": "Get ready to run. On my mark." },
+
+    { "id": "b15", "at": 484, "voice": "ruby",
+      "text": "Go! Sprint to the end of the street! They are slow and you are fast. Run!" },
+
+    { "id": "b16", "at": 501, "voice": "ruby",
+      "text": "Almost there! Five more seconds! Four! Three! Two! One!" },
+
+    { "id": "b17", "at": 514, "voice": "ruby",
+      "text": "You lost them! And Gus tripped over a garden gnome. He's fine. He is apologising to it." },
+
+    { "id": "b18", "at": 546, "voice": "ruby",
+      "text": "Walk it off, Runner Two. Big deep breaths. That was brilliant running." },
+
+    { "id": "b19", "at": 576, "voice": "ruby", "type": "supply",
+      "item": "sun", "name": "Jar of sun", "count": 1, "icon": "☀️",
+      "text": "Wait. There's one more jar sitting in that flowerbed. We are definitely going to need that." },
+
+    { "id": "b20", "at": 608, "voice": "ruby",
+      "text": "Home stretch now. Jog it out." },
+
+    { "id": "b21", "at": 656, "voice": "ruby", "type": "supply",
+      "item": "sun", "name": "Jars of sun", "count": 2, "icon": "☀️",
+      "text": "Two more jars leaning against the fence. Last ones, I promise." },
+
+    { "id": "b22", "at": 690, "voice": "ruby",
+      "text": "You know what? The kids at Sunnyside have been asking about you. They call you the fast one." },
+
+    { "id": "b23", "at": 730, "voice": "ruby",
+      "text": "Last jog of the day. Make it a good one!" },
+
+    { "id": "b24", "at": 772, "voice": "ruby",
+      "text": "That's it. That was the last one. Walk it home, Runner Two." },
+
+    { "id": "b25", "at": 812, "voice": "ruby",
+      "text": "I can see you from the porch. Opening the gate now." },
+
+    { "id": "b26", "at": 846, "voice": "ruby",
+      "text": "You're home. Slow it right down and shake those legs out." },
+
+    { "id": "b27", "at": 884, "voice": "ruby",
+      "text": "Seven jars of sun and a watering can. That is a proper haul. Take it out to the lawn and get something growing." },
+
+    { "id": "b28", "at": 920, "voice": "ruby",
+      "text": "Get some rest. Next time we are going up the hill to the old greenhouse. Ruby out." }
+  ]
+}

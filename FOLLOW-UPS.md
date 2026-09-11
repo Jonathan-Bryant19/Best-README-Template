@@ -21,19 +21,23 @@ should be waiting for you in a commit message or buried in a chat scrollback.
 Until this is done the app uses the phone's robot voice, and **the story stops if the
 screen locks** — so the phone has to stay awake and out of your pocket.
 
+> **Now unblocked (2026-09-11).** This was deliberately held back while the Plants
+> theme landed, because the reskin rewrote every line of chapter 1 and any audio
+> generated before it would have been money thrown away. The script is settled now.
+
 - **Why me:** it needs your OpenAI API key. I have no keys and can't buy one.
 - **Do:**
   ```bash
   cp tools/.env.example tools/.env     # paste your key in
   brew install ffmpeg                  # used once, for the mp3 encode
-  node tools/build-audio.mjs --chapter ch01
+  node tools/build-audio.mjs --pack sunnyside --chapter ch01
   ```
   Run `--dry-run` first if you want to see the size of it without being billed;
   a chapter is a couple of thousand characters, so expect pennies.
 - **Verify:** the home screen should read **🔊 story audio** instead of
   *🤖 robot voice*. Then listen to the whole chapter once at home before jogging with
   it — see item 1 under *Verify on a real run*.
-- **Commit the result.** `docs/content/packs/riverbend/audio/ch01.mp3` and
+- **Commit the result.** `docs/content/packs/sunnyside/audio/ch01.mp3` and
   `ch01.timeline.json` are meant to be checked in. `tools/.env` is gitignored and must
   never be.
 
@@ -94,13 +98,32 @@ differs.
 
 - **Check:** can you hit it one-handed, jogging, without looking? Does it ever get hit
   by accident when you meant Pause?
-- **Note:** anything you skip past is still credited — skip over the water pipes and
-  you still get them. Deliberate: losing supplies to a skip mid-jog would be a
+- **Note:** anything you skip past is still credited — skip over the jars of sun and
+  you still get them. Deliberate: losing sun to a skip mid-jog would be a
   confusing punishment for a six-year-old.
 
 ### 6. Add to Home Screen
 - **Check:** does it open full-screen with no Safari chrome, and does the icon look
   right on the home screen?
+
+### 7. The new palette in daylight *(added 2026-09-11)*
+The shell went from navy to dark green and the accent from orange to yellow. Every
+judgement about it so far was made on a desktop monitor indoors.
+
+- **Check:** on a bright day, is the home screen still readable? The run screen's
+  interval colours were deliberately *not* re-themed — they're tuned for legibility
+  at arm's length while moving — so if anything is hard to read it'll be the home
+  and lawn screens, not the run.
+
+### 8. Does Logan like the plants? *(added 2026-09-11)*
+Six original plants — Sunbud, Pod Popper, Old Acorn, Frostberry, Thumper, Big Rosie —
+drawn as flat SVG. They are deliberately **not** the plants from the game he knows,
+and cannot be.
+
+- **Check:** show him the lawn screen before the next jog rather than during it. If
+  the gap between what he imagined and what he sees is going to be a problem, better
+  to find out at the kitchen table.
+- His answer also decides how much to invest in the battle layer.
 
 ---
 
@@ -123,6 +146,11 @@ quietly skipped:
 
 ## Done
 
+- **2026-09-11** — Retheme phase 1 shipped: Sunnyside pack, the lawn, the garden kit,
+  and the app renamed to "Runner Two". **His home-screen label will change** — the
+  icon image changes too, but the tile stays where it is. His existing sun and
+  progress carry over; this was tested against a save in the old shape.
+- **2026-09-10** — Interval skipping added.
 - **2026-09-09** — GitHub Pages enabled, building from
   `claude/story-running-app-kids-hr4wgs`.
 - **2026-09-09** — First jog completed in robot-voice mode. Verdict: feel and script

@@ -8,10 +8,10 @@ import { TrackPlayback, ClipPlayback, setupMediaSession } from './audio.js';
 import { heroSvg } from './hero.js';
 import { sceneSvg, renderBuildList, totalStages, builtStages } from './base.js';
 
-const PACK_ID = 'riverbend';
+const PACK_ID = 'sunnyside';
 
 // Must match the CACHE name in sw.js.
-const AUDIO_CACHE = 'riverbend-v1';
+const AUDIO_CACHE = 'runner-two-v2';
 
 const $ = (id) => document.getElementById(id);
 
@@ -38,11 +38,27 @@ function formatTime(seconds) {
   return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
 }
 
+// What the current pack calls things. Every player-facing noun comes from here
+// rather than being written into the code, so a new pack is content, not a patch.
+const DEFAULT_VOCABULARY = {
+  currency: { name: 'supplies', icon: '📦', forBase: 'supplies for the base' },
+  gear: { unlockSuffix: 'unlocked!', forever: 'new gear — yours for good' },
+  base: { name: 'Base', goTo: 'GO TO BASE', progressLabel: 'things fixed' }
+};
+
+function vocab() {
+  const pack = app.pack?.vocabulary ?? {};
+  return {
+    currency: { ...DEFAULT_VOCABULARY.currency, ...pack.currency },
+    gear: { ...DEFAULT_VOCABULARY.gear, ...pack.gear },
+    base: { ...DEFAULT_VOCABULARY.base, ...pack.base }
+  };
+}
+
 function iconFor(item) {
-  if (item.kind === 'gear') {
-    return app.pack.gear.find((g) => g.id === item.id)?.icon ?? '⭐';
-  }
-  return { pipe: '🔧', bolts: '🔩', wrench: '🔧', plank: '🪵' }[item.id] ?? '📦';
+  if (item.icon) return item.icon; // beats may carry their own
+  if (item.kind === 'gear') return app.pack.gear.find((g) => g.id === item.id)?.icon ?? '⭐';
+  return vocab().currency.icon;
 }
 
 // ───────────────────────── home ─────────────────────────
@@ -52,7 +68,11 @@ function renderHome() {
   const chapter = store.nextChapter(state, app.pack);
   const done = store.completedChapters(state, app.pack.id);
 
+  const words = vocab();
   $('supply-count').textContent = state.supplies;
+  $('supply-icon').textContent = words.currency.icon;
+  $('supply-label').textContent = words.currency.name;
+  $('btn-to-base').textContent = words.base.goTo;
   $('home-hero').innerHTML = heroSvg(state.gear);
 
   const index = app.pack.chapters.findIndex((c) => c.id === chapter.id);
@@ -156,10 +176,12 @@ function flashToast(icon, text, ms = 3200) {
 }
 
 function showPickup(beat) {
-  const item = { kind: beat.type === 'gear' ? 'gear' : 'supply', id: beat.item };
+  const item = { kind: beat.type === 'gear' ? 'gear' : 'supply', id: beat.item, icon: beat.icon };
   flashToast(
     iconFor(item),
-    beat.type === 'gear' ? `${beat.name} unlocked!` : `+${beat.count ?? 1} ${beat.name ?? beat.item}`
+    beat.type === 'gear'
+      ? `${beat.name} ${vocab().gear.unlockSuffix}`
+      : `+${beat.count ?? 1} ${beat.name ?? beat.item}`
   );
 }
 
@@ -188,7 +210,7 @@ function finishRun(event, complete) {
   <span class="loot-icon">${iconFor(item)}</span>
   <span>
     ${item.name}${item.count > 1 ? ` ×${item.count}` : ''}
-    <span class="loot-sub">${item.kind === 'gear' ? 'new gear — yours for good' : 'supplies for the base'}</span>
+    <span class="loot-sub">${item.kind === 'gear' ? vocab().gear.forever : vocab().currency.forBase}</span>
   </span>
 </li>`
         )
@@ -209,12 +231,15 @@ function endRunEarly() {
 function renderBase() {
   const state = store.load();
   const { structures } = app.pack.base;
+  const words = vocab();
 
   $('base-title').textContent = app.pack.base.name;
   $('base-supply-count').textContent = state.supplies;
+  $('base-supply-icon').textContent = words.currency.icon;
   $('base-scene').innerHTML = sceneSvg(structures, state.structures, state.gear);
-  $('build-list').innerHTML = renderBuildList(app.pack, state);
-  $('base-progress').textContent = `${builtStages(app.pack, state)} of ${totalStages(app.pack)} things fixed`;
+  $('build-list').innerHTML = renderBuildList(app.pack, state, words.currency.icon);
+  $('base-progress').textContent =
+    `${builtStages(app.pack, state)} of ${totalStages(app.pack)} ${words.base.progressLabel}`;
 }
 
 function build(structureId) {
@@ -367,8 +392,8 @@ async function boot() {
   }
 }
 
-// Debug handle: lets you drive a run from the console (riverbend.session.skip(60))
+// Debug handle: lets you drive a run from the console (runnerTwo.session.skip(60))
 // and is what the smoke test hooks into.
-window.riverbend = app;
+window.runnerTwo = app;
 
 boot();

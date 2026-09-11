@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Riverbend Runners</title>
+<title>Runner Two</title>
 <meta name="description" content="A story-driven interval running game for jogging with kids." />
-<meta name="theme-color" content="#12161f" />
+<meta name="theme-color" content="#101a14" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Riverbend" />
+<meta name="apple-mobile-web-app-title" content="Runner Two" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="icons/icon-180.png" />
@@ -20,9 +20,10 @@
 <!-- ───────────────────────── Home ───────────────────────── -->
 <section id="screen-home" class="screen is-active">
   <header class="home-header">
-    <h1 class="wordmark">Riverbend<span>Runners</span></h1>
+    <h1 class="wordmark">Runner<span>Two</span></h1>
     <button id="btn-base" class="chip" type="button">
-      <span class="chip-icon">📦</span><span id="supply-count">0</span> supplies
+      <span class="chip-icon" id="supply-icon">☀️</span><span id="supply-count">0</span>
+      <span id="supply-label">sun</span>
     </button>
   </header>
 
@@ -94,7 +95,7 @@
   <ul id="post-loot" class="loot-list"></ul>
 
   <div class="post-actions">
-    <button id="btn-to-base" class="btn-huge" type="button">GO TO BASE</button>
+    <button id="btn-to-base" class="btn-huge" type="button">GO TO THE LAWN</button>
     <button id="btn-post-home" class="link-btn" type="button">back to home</button>
   </div>
 </section>
@@ -103,7 +104,9 @@
 <section id="screen-base" class="screen">
   <header class="base-header">
     <button id="btn-base-back" class="link-btn" type="button">← back</button>
-    <p class="supply-badge"><span class="chip-icon">📦</span><span id="base-supply-count">0</span></p>
+    <p class="supply-badge">
+      <span class="chip-icon" id="base-supply-icon">☀️</span><span id="base-supply-count">0</span>
+    </p>
   </header>
 
   <h2 id="base-title">Riverbend</h2>

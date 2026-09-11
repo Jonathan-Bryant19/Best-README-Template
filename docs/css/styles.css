@@ -1,14 +1,17 @@
-/* Riverbend Runners
+/* Runner Two
    Design rule: a six-year-old glancing at a phone in motion should know what to
    do from colour and size alone, without reading a word. */
 
 :root {
-  --ink: #12161f;
-  --paper: #f8fafc;
-  --muted: #94a3b8;
-  --surface: #1b2130;
-  --surface-2: #232b3d;
-  --accent: #f97316;
+  /* Shell colours carry the theme. The interval colours below deliberately do
+     not — they're chosen for legibility at arm's length while moving, and that
+     job doesn't change when the story does. */
+  --ink: #101a14;
+  --paper: #f4faf5;
+  --muted: #90a897;
+  --surface: #18261d;
+  --surface-2: #203025;
+  --accent: #facc15;
 
   --warmup: #f59e0b;
   --jog: #22c55e;
@@ -114,7 +117,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-size: 1.6rem;
   line-height: 1.15;
 }
-.blurb { margin: 0 0 12px; line-height: 1.45; color: #cbd5e1; }
+.blurb { margin: 0 0 12px; line-height: 1.45; color: #d3e3d6; }
 .meta { margin: 0; font-size: 0.8rem; color: var(--muted); }
 
 .btn-huge {
@@ -151,7 +154,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 #screen-run {
   justify-content: space-between;
   transition: background-color 400ms ease;
-  color: #0b1020;
+  color: #0d1710;
 }
 #screen-run[data-interval="warmup"]   { background: var(--warmup); }
 #screen-run[data-interval="jog"]      { background: var(--jog); }
@@ -257,7 +260,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   margin-top: 22px;
   padding: 14px 22px;
   border-radius: 999px;
-  background: #0b1020;
+  background: #0d1710;
   color: #fff;
   font-weight: 800;
   text-align: left;
@@ -289,7 +292,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-size: 0.85rem;
   font-weight: 700;
 }
-.dev-btn[aria-pressed="true"] { background: #0b1020; color: #fff; }
+.dev-btn[aria-pressed="true"] { background: #0d1710; color: #fff; }
 
 /* ───────────────────────── Post-run ───────────────────────── */
 
@@ -316,7 +319,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .loot-list .loot-icon { font-size: 1.6rem; }
 .loot-list .loot-sub { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
-.loot-list li.is-gear { background: linear-gradient(135deg, #3b2a12, #4a3316); }
+.loot-list li.is-gear { background: linear-gradient(135deg, #2f3d16, #44541f); }
 
 .post-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 .post-actions .btn-huge { max-width: 420px; }
@@ -328,7 +331,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .base-stage {
   border-radius: 22px;
-  background: linear-gradient(#1d283c, #131a28);
+  background: linear-gradient(#1f3325, #14211a);
   padding: 10px;
   overflow: hidden;
 }

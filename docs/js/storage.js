@@ -1,5 +1,10 @@
 // Player save state. One localStorage object, no server, nothing leaves the phone.
 
+// Do not rename this. It carries the old theme's name because it is the key a
+// real save already lives under on a real phone — renaming it silently wipes
+// that progress. The field names below are the same deal: they're deliberately
+// theme-neutral internals, and what a pack *calls* them comes from its
+// `vocabulary` block instead.
 const KEY = 'riverbend.save.v1';
 
 function defaults() {
@@ -11,7 +16,7 @@ function defaults() {
     structures: {},
     // gear is story-granted, never bought: ['headlamp', 'backpack']
     gear: [],
-    // progress: { riverbend: { completed: ['ch01'] } }
+    // progress: { sunnyside: { completed: ['ch01'] } }
     progress: {},
     // one entry per finished run, newest last
     history: [],

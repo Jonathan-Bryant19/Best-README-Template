@@ -1,13 +1,13 @@
 <div align="center">
 
-# Riverbend Runners
+# Runner Two
 
 **A story-driven interval running game for jogging with a six-year-old.**
 
-Zombies chase you, you bring supplies home, and the town you're rebuilding
-gets a little better after every run.
+Goofy zombies chase you, you bring sun home, and the lawn you're growing gets a
+little better after every run.
 
-<img src="images/app-home.png" width="240" alt="Home screen"> <img src="images/app-run.png" width="240" alt="Run screen during a walk interval"> <img src="images/app-base.png" width="240" alt="The base you rebuild">
+<img src="images/app-home.png" width="240" alt="Home screen"> <img src="images/app-run.png" width="240" alt="Run screen during a walk interval"> <img src="images/app-base.png" width="240" alt="The lawn you grow">
 
 </div>
 
@@ -18,18 +18,21 @@ gets a little better after every run.
 A phone web app (no app store, no install) that narrates a story over a
 run/walk interval workout. Each chapter is about 16 minutes, of which roughly
 four are actual jogging. The story tells you when to run and when to walk, drops
-supplies along the way, and hands you a piece of gear at some point in every
+sun along the way, and hands you a piece of kit at some point in every
 chapter.
 
 The zombies are slow, clumsy, and mostly interested in your snacks. Nobody is
-bitten, nobody is hurt, and every chapter ends safely back at base. The one place
+bitten, nobody is hurt, and every chapter ends safely back home. The one place
 it gets genuinely exciting is the sprint, where the screen turns red and Ruby on
 the radio tells you to run to the end of the street.
 
-**Two rewards, one screen.** Supplies are spent by the runner on rebuilding
-Riverbend — the water tower, the garden, and eventually the playground. Gear is
-never bought: the story just gives it to you, and the character on screen visibly
-gains it. He stands in the town he's rebuilt, wearing what he's found.
+**Two rewards, one screen.** Sun is spent by the runner on growing the lawn —
+Sunbud, Pod Popper, Old Acorn and the rest. Kit is never bought: the story just
+gives it to you, and the character on screen visibly gains it. He stands in the
+lawn he grew, wearing what he found.
+
+The plants are original archetypes with original names. No assets, art, or
+character names from any published game are used.
 
 ## Quick start
 
@@ -110,13 +113,13 @@ pennies. Check your OpenAI usage dashboard for current rates.
 
 ## Writing a chapter
 
-Chapters are plain JSON in `docs/content/packs/riverbend/chapters/`. Nothing about
+Chapters are plain JSON in `docs/content/packs/sunnyside/chapters/`. Nothing about
 the story lives in JavaScript, so you can rewrite a line without touching code.
 
 ```jsonc
 {
   "id": "ch02",
-  "title": "The Radio Mast",
+  "title": "The Greenhouse",
 
   // The workout. This is the source of truth for all timing.
   "intervals": [
@@ -134,20 +137,21 @@ the story lives in JavaScript, so you can rewrite a line without touching code.
     { "id": "b01", "at": 3, "voice": "ruby", "text": "Runner Two, do you copy?" },
 
     { "id": "b04", "at": 240, "voice": "ruby", "type": "supply",
-      "item": "rope", "name": "Coil of rope", "count": 2,
-      "text": "Rope, on the fence post. Grab it!" },
+      "item": "sun", "name": "Jars of sun", "count": 2, "icon": "☀️",
+      "text": "Two jars of sun, on the fence post. Grab them!" },
 
     { "id": "b09", "at": 520, "voice": "ruby", "type": "gear",
-      "item": "boots", "name": "Fast Boots",
-      "text": "Try these on. Nobody's catching you now." }
+      "item": "gloves", "name": "Garden Gloves",
+      "text": "Try these on. Nothing can prickle you now." }
   ]
 }
 ```
 
 Interval types are `warmup`, `jog`, `walk`, `chase` and `cooldown`; each has its
 own screen colour and its own spoken cue. Beat types are narration (the default),
-`supply` (adds to the pile you spend on the base) and `gear` (unlocks a layer on
-the character, permanently).
+`supply` (adds to the currency you spend on the base) and `gear` (unlocks a layer
+on the character, permanently). What those are *called* comes from `vocabulary`
+in `pack.json`, not from the code — so a new pack is content, not a patch.
 
 Then add the chapter to `chapters` in `pack.json`, and run the build script.
 
@@ -161,8 +165,8 @@ Tap **dev tools** on the home screen to get a panel on the run screen with 1×/2
 speed and a **+60s** skip. A 16-minute chapter is testable in about a minute at the
 kitchen table, which you'll want long before you want to test it outdoors.
 
-`window.riverbend` in the console exposes the live session
-(`riverbend.session.skip(60)`).
+`window.runnerTwo` in the console exposes the live session
+(`runnerTwo.session.skip(60)`).
 
 ## Deploying
 
@@ -208,7 +212,10 @@ the same interface, and nothing else in the app knows the difference.
 
 ## Not done yet
 
-- Chapters 2–6 of Riverbend (chapter 1 is written; the base has six structures to fill).
+- **The lawn battle.** Sun currently buys plants that sit there looking nice. The
+  next step is a lane defense that resolves after each run, with the choices made
+  at walk breaks — see the plan notes for the design.
+- Chapters 2–6 of Sunnyside (chapter 1 is written; the lawn has six beds to fill).
 - Music beds. The player can take an optional loop per chapter; no audio is sourced yet.
 - Adjustable interval lengths, for when four minutes of jogging stops being enough.
 - GPS. Deliberately left out — at a six-year-old's pace the drift is larger than the

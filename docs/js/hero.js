@@ -32,6 +32,39 @@ const GEAR_LAYERS = {
       <rect x="32" y="24" width="38" height="7" rx="3.5" fill="#1f2937"/>
       <circle cx="51" cy="27.5" r="6" fill="#fde047"/>
       <path d="M51 27 L73 19 L73 36 Z" fill="#fde047" opacity="0.2"/>
+    </g>`,
+
+  // ── Sunnyside: the garden kit ──
+  // Tools are spread deliberately — trowel in the left hand, can on the right hip,
+  // barrow parked low and right — so a runner wearing all six still reads clearly.
+  wateringCan: `
+    <g data-gear="wateringCan">
+      <rect x="74" y="100" width="16" height="15" rx="3" fill="#94a3b8"/>
+      <path d="M90 103 L98 98 L98 103 L90 108Z" fill="#94a3b8"/>
+      <path d="M74 103 Q68 107 74 112" fill="none" stroke="#64748b" stroke-width="2.5"/>
+      <rect x="78" y="97" width="8" height="3" rx="1.5" fill="#64748b"/>
+    </g>`,
+  gloves: `
+    <g data-gear="gloves">
+      <circle cx="28.5" cy="94" r="7" fill="#84cc16"/>
+      <circle cx="73.5" cy="94" r="7" fill="#84cc16"/>
+    </g>`,
+  sunHat: `
+    <g data-gear="sunHat">
+      <ellipse cx="51" cy="26" rx="30" ry="7" fill="#eab308"/>
+      <path d="M36 25 Q51 6 66 25Z" fill="#facc15"/>
+      <rect x="36" y="22" width="30" height="4" rx="2" fill="#ca8a04"/>
+    </g>`,
+  trowel: `
+    <g data-gear="trowel">
+      <rect x="26" y="96" width="4.5" height="13" rx="2.2" fill="#78350f"/>
+      <path d="M24 109 Q28.5 120 33 109Z" fill="#cbd5e1"/>
+    </g>`,
+  barrow: `
+    <g data-gear="barrow">
+      <path d="M70 120 L98 120 L93 132 L76 132Z" fill="#f97316"/>
+      <path d="M70 120 L64 113" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="94" cy="138" r="5.5" fill="#1f2937"/>
     </g>`
 };
 
@@ -45,6 +78,7 @@ export function heroSvg(owned = []) {
 
   return `
 <svg viewBox="0 0 102 152" role="img" aria-label="Your runner">
+  ${layer('barrow')}
   ${layer('backpack')}
 
   <!-- legs -->
@@ -64,11 +98,16 @@ export function heroSvg(owned = []) {
   <!-- arms, a shade darker than the torso so they don't merge into it -->
   <rect x="23" y="58" width="11" height="34" rx="5.5" fill="${has('jacket') ? '#dc2626' : '#0ea5e9'}"/>
   <rect x="68" y="58" width="11" height="34" rx="5.5" fill="${has('jacket') ? '#dc2626' : '#0ea5e9'}"/>
-  <circle cx="28.5" cy="94" r="6" fill="#f5c9a4"/>
-  <circle cx="73.5" cy="94" r="6" fill="#f5c9a4"/>
+  <!-- gloves cover the bare hands when owned -->
+  ${has('gloves')
+    ? GEAR_LAYERS.gloves
+    : `<circle cx="28.5" cy="94" r="6" fill="#f5c9a4"/>
+       <circle cx="73.5" cy="94" r="6" fill="#f5c9a4"/>`}
 
   ${layer('radio')}
   ${layer('whistle')}
+  ${layer('trowel')}
+  ${layer('wateringCan')}
 
   <!-- head -->
   <circle cx="51" cy="34" r="18" fill="#f5c9a4"/>
@@ -78,5 +117,6 @@ export function heroSvg(owned = []) {
   <path d="M45 42 Q51 47 57 42" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linecap="round"/>
 
   ${layer('headlamp')}
+  ${layer('sunHat')}
 </svg>`;
 }

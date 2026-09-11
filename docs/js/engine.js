@@ -211,13 +211,19 @@ export class RunSession {
   }
 
   _grant(beat) {
+    // `icon` rides along so the post-run screen doesn't need a lookup table of
+    // every item a pack might invent.
     if (beat.type === 'supply') {
       const count = beat.count ?? 1;
       this.collected.supplies += count;
-      this.collected.items.push({ kind: 'supply', id: beat.item, name: beat.name ?? beat.item, count });
+      this.collected.items.push({
+        kind: 'supply', id: beat.item, name: beat.name ?? beat.item, count, icon: beat.icon
+      });
     } else if (beat.type === 'gear') {
       this.collected.gear.push(beat.item);
-      this.collected.items.push({ kind: 'gear', id: beat.item, name: beat.name ?? beat.item, count: 1 });
+      this.collected.items.push({
+        kind: 'gear', id: beat.item, name: beat.name ?? beat.item, count: 1, icon: beat.icon
+      });
     }
   }
 

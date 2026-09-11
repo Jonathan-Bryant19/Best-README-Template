@@ -1,13 +1,13 @@
 {
-  "name": "Riverbend Runners",
-  "short_name": "Riverbend",
+  "name": "Runner Two",
+  "short_name": "Runner Two",
   "description": "A story-driven interval running game for jogging with kids.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#12161f",
-  "theme_color": "#12161f",
+  "background_color": "#101a14",
+  "theme_color": "#101a14",
   "icons": [
     { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },

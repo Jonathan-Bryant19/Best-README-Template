@@ -1,0 +1,98 @@
+{
+  "id": "sunnyside",
+  "title": "Sunnyside",
+  "tagline": "The lawn needs defending. You're the one who can run.",
+
+  "_comment": "Plant archetypes with original names — none of the characters, art or names from any published game. Lane defense is a mechanic, and mechanics aren't ownable.",
+
+  "vocabulary": {
+    "currency": { "name": "sun", "icon": "☀️", "forBase": "sun for the lawn" },
+    "gear": { "unlockSuffix": "added to your kit!", "forever": "new kit — yours for good" },
+    "base": { "name": "The Lawn", "goTo": "GO TO THE LAWN", "progressLabel": "plants grown" }
+  },
+
+  "voices": {
+    "ruby": {
+      "openaiVoice": "shimmer",
+      "instructions": "A warm, upbeat radio operator talking to a child she likes and trusts. Encouraging, playful, a little wry. Clear and bright. Never frightening, never urgent in a way that reads as danger to a young child."
+    },
+    "gus": {
+      "openaiVoice": "onyx",
+      "instructions": "A slow, goofy, completely harmless cartoon zombie. Confused groaning, comic timing, like a friendly monster in a children's show. Not scary."
+    },
+    "narrator": {
+      "openaiVoice": "fable",
+      "instructions": "A warm storyteller reading to a six-year-old at bedtime."
+    },
+    "cue": {
+      "openaiVoice": "shimmer",
+      "instructions": "A short, energetic coaching call-out to a child who is out running. Bright, clear, and easy to hear over footsteps."
+    }
+  },
+
+  "gear": [
+    { "id": "wateringCan", "name": "Watering Can", "icon": "🪣" },
+    { "id": "gloves", "name": "Garden Gloves", "icon": "🧤" },
+    { "id": "sunHat", "name": "Sun Hat", "icon": "👒" },
+    { "id": "boots", "name": "Muck Boots", "icon": "🥾" },
+    { "id": "trowel", "name": "Lucky Trowel", "icon": "🌱" },
+    { "id": "barrow", "name": "Wheelbarrow", "icon": "🛒" }
+  ],
+
+  "base": {
+    "name": "The Lawn",
+    "structures": [
+      {
+        "id": "sunbud",
+        "name": "Sunbud",
+        "icon": "🌻",
+        "stages": ["Bare soil", "Sprouting", "Making sun"],
+        "costs": [0, 3, 5]
+      },
+      {
+        "id": "podPopper",
+        "name": "Pod Popper",
+        "icon": "🫛",
+        "stages": ["Bare soil", "Sprouting", "Popping"],
+        "costs": [0, 3, 4]
+      },
+      {
+        "id": "oldAcorn",
+        "name": "Old Acorn",
+        "icon": "🌰",
+        "stages": ["Bare soil", "Sprouting", "Tough as old boots"],
+        "costs": [0, 3, 4]
+      },
+      {
+        "id": "frostberry",
+        "name": "Frostberry",
+        "icon": "🫐",
+        "stages": ["Bare soil", "Sprouting", "Frosty"],
+        "costs": [0, 3, 5]
+      },
+      {
+        "id": "thumper",
+        "name": "Thumper",
+        "icon": "🍈",
+        "stages": ["Bare soil", "Sprouting", "Ready to thump"],
+        "costs": [0, 2, 4]
+      },
+      {
+        "id": "bigRosie",
+        "name": "Big Rosie",
+        "icon": "🌹",
+        "stages": ["Bare soil", "Sprouting", "Enormous"],
+        "costs": [0, 3, 5]
+      }
+    ]
+  },
+
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "The Sunflower Patch",
+      "blurb": "The sprinklers gave out overnight and the sunflower patch has wilted. Somebody has to fetch sun from the garden shed, and everyone else is slower than you.",
+      "minutes": 16
+    }
+  ]
+}
