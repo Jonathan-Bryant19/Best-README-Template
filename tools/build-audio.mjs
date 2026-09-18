@@ -47,7 +47,7 @@ const SHIFT_WARN = 1.5;    // complain if a line slides this far from its mark
 
 function parseArgs(argv) {
   const args = {
-    pack: 'riverbend', chapter: null,
+    pack: 'sunnyside', chapter: null,
     all: false, dryRun: false, fakeVoice: false, force: false, help: false
   };
   for (let i = 0; i < argv.length; i++) {
@@ -315,7 +315,7 @@ async function main() {
 
   --chapter <id>   build one chapter (e.g. ch01)
   --all            build every chapter listed in the pack
-  --pack <id>      which story pack (default: riverbend)
+  --pack <id>      which story pack (default: sunnyside)
   --dry-run        report line and character counts, call nothing, bill nothing
   --fake-voice     build a real track with silence in place of narration, to
                    check a chapter's pacing and that the script fits — free

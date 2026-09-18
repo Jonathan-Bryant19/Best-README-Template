@@ -36,9 +36,15 @@ character names from any published game are used.
 
 ## Quick start
 
-**On a phone — use GitHub Pages.** Settings → Pages → Deploy from a branch, pick
-the branch the app is on, folder **`/docs`**, Save. Wait a minute, then open the
-site and use **Share → Add to Home Screen**.
+```bash
+git clone https://github.com/Jonathan-Bryant19/adventure-run.git
+cd adventure-run
+```
+
+**On a phone — use GitHub Pages.** Settings → Pages → Deploy from a branch → `main`,
+folder **`/docs`**, Save. Wait a minute, then open
+`https://jonathan-bryant19.github.io/adventure-run/` and use
+**Share → Add to Home Screen**.
 
 If the site shows this README instead of the app, the folder is set to `/ (root)`.
 There's a redirect at the repo root that handles that, but `/docs/` on the end of
@@ -171,9 +177,8 @@ kitchen table, which you'll want long before you want to test it outdoors.
 ## Deploying
 
 The app is static and lives in `docs/`, so GitHub Pages needs one setting:
-**Settings → Pages → Deploy from a branch**, then pick the branch and folder
-**`/docs`**. Pages will serve any branch, so there's nothing to merge first. Push,
-wait a minute, and it's on a URL you can open on any phone.
+**Settings → Pages → Deploy from a branch → `main`**, folder **`/docs`**. Push, wait a
+minute, and it's on a URL you can open on any phone.
 
 The live link appears in a banner at the *top* of the Pages settings screen, and
 only once the build has finished and you've reloaded — it never shows up next to
@@ -184,7 +189,7 @@ Two safeguards are in the repo so a wrong setting doesn't produce a broken site:
 `index.html` at the root redirects to `docs/` when Pages is serving from `/ (root)`,
 and `.nojekyll` files stop Pages from running the site through Jekyll.
 
-This repo's default branch is `master`, not `main`.
+
 
 ## How it fits together
 
@@ -230,6 +235,9 @@ app and its story files.
 
 ## Licence
 
-MIT — see `LICENSE.txt`. Built on top of
-[Best-README-Template](https://github.com/othneildrew/Best-README-Template);
-the original template README is preserved as `BLANK_README.md`.
+MIT — see `LICENSE.txt`.
+
+This project spent its first few commits inside a fork of
+[Best-README-Template](https://github.com/othneildrew/Best-README-Template), because
+that is where a phone-started session happened to open — not because it had anything
+to do with it. It has its own repo now.

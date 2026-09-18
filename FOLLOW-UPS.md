@@ -15,6 +15,22 @@ should be waiting for you in a commit message or buried in a chat scrollback.
 
 ---
 
+## Getting the code on your machine
+
+**This project is built in an ephemeral cloud container.** Nothing there persists, and
+nothing is ever written to your computer. The durable copy is GitHub. If you go looking
+for it in your development directory, it will not be there.
+
+```bash
+git clone https://github.com/Jonathan-Bryant19/adventure-run.git
+cd adventure-run
+```
+
+Anything below that needs your key, your card, your phone or your ears runs from that
+clone — and anything you do there only reaches a future session once you `git push`.
+
+---
+
 ## Needs you
 
 ### 1. Generate the story audio ⭐ biggest one
@@ -26,6 +42,7 @@ screen locks** — so the phone has to stay awake and out of your pocket.
 > generated before it would have been money thrown away. The script is settled now.
 
 - **Why me:** it needs your OpenAI API key. I have no keys and can't buy one.
+- **First:** you need a local clone — see *Getting the code on your machine* above.
 - **Do:**
   ```bash
   cp tools/.env.example tools/.env     # paste your key in
@@ -41,19 +58,22 @@ screen locks** — so the phone has to stay awake and out of your pocket.
   `ch01.timeline.json` are meant to be checked in. `tools/.env` is gitignored and must
   never be.
 
-### 2. Decide where this repo lives
-Currently a branch on a fork of Best-README-Template, which is where the session
-happened to start, not a considered choice.
+### 2. Finish the move to `adventure-run`
+The repo exists but the last steps need you — see *Done* for what changed and why.
 
-- **State:** `master` is untouched and still the pristine template. Moving costs one
-  push and changes only the Pages URL.
-- **You said:** later. Left open deliberately.
-
-### 3. Pages is serving from `/ (root)`, not `/docs`
-Cosmetic only — a redirect at the repo root handles it and the app works.
-
-- **Do (optional):** Settings → Pages → folder → `/docs`. Cleaner URLs, slightly
-  faster builds, and the root redirect becomes dead weight you could delete.
+- **Enable Pages:** Settings → Pages → Deploy from a branch → `main`, folder `/docs`.
+  New URL: `https://jonathan-bryant19.github.io/adventure-run/`
+- **Repoint Logan's phone.** His home-screen tile points at the old URL and will not
+  follow. Delete the old tile, open the new URL, Add to Home Screen again. Do this
+  *before* turning the old site off, so there's never a moment with neither working.
+  - His save survives untouched: `localStorage` is scoped to the origin
+    (`jonathan-bryant19.github.io`), not the path, so his sun, kit and progress carry
+    over to the new URL with nothing to migrate.
+  - Deleting the old tile also matters because its service worker can keep serving a
+    cached copy offline forever — a stale app is more confusing than a dead link.
+- **Then retire the old one:** delete the `claude/story-running-app-kids-hr4wgs` branch
+  in `Best-README-Template` and turn its Pages off. `master` there is untouched, so
+  that restores it to being exactly a README template.
 
 ---
 
@@ -132,6 +152,8 @@ and cannot be.
 Things I can't do from this container, so they'll always land here rather than getting
 quietly skipped:
 
+- **This container is not your computer.** Work reaches you only by being pushed to
+  GitHub. Nothing I do here appears in your development directory on its own.
 - **No API keys or payment.** Anything billed is yours.
 - **No phone, no speakers.** I can assert that audio *files* are correct — length,
   offsets, format — never that they sound good.
@@ -146,6 +168,12 @@ quietly skipped:
 
 ## Done
 
+- **2026-09-18** — Moved the app out of the `Best-README-Template` fork into its own
+  repo, `adventure-run`, carrying the four app commits and dropping the template's
+  history. It had been living in that fork for no reason other than that a
+  phone-started session opened there; it was never a decision. Added a `CLAUDE.md`
+  recording where the code lives, so a future session says so up front instead of
+  letting it be discovered days later.
 - **2026-09-11** — Retheme phase 1 shipped: Sunnyside pack, the lawn, the garden kit,
   and the app renamed to "Runner Two". **His home-screen label will change** — the
   icon image changes too, but the tile stays where it is. His existing sun and
